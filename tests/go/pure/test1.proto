@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+/*
+    this is test protoc file.
+*/
+message TestRequest {
+  string a = 1;
+  int32 b = 2;
+  int62 c = 3;
+  fixed32 d = 4;
+}

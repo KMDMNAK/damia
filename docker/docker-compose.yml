@@ -1,0 +1,13 @@
+version: "3.3"
+services:
+  dev:
+    container_name: damia_dev
+    image: damia/dev
+    build:
+      context: ..
+      dockerfile: ./docker/Dockerfile.dev
+    working_dir: /root/damia
+    volumes: 
+      - ..:/root/damia
+    tty: true
+    command: "/bin/bash"

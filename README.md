@@ -1,17 +1,53 @@
 # Damia
 
-Damia is a code generator for protocol buffer.  
-You can generate type code of specific languages.
+Damia is a code generator for development environment.
+You can setupt dev configs like Dockerfile, .vscode(settings.json,extensions.json), webpack.config.js etc...
+Damia constructs lint and formatter based on Docker.
 
-## feature
+# requirement 
+- Docker
+- docker-compose
 
-- specific language type code.
-- code for creating messages.
+# install
+
+```
+pip install damia
+```
+
+```
+npm i -g damia
+```
 
 # usage
+## help
+### lan
+show list of supported languages
 
-## config file
-- json
-- yml
+## docker
+### dev
+#### options
+- product
 
 
+```
+damia docker dev
+```
+
+## template
+### generate
+### add
+
+
+```
+damia generate -t python
+damia generate -t vscode
+damia generate -t python vscode
+```
+
+#### options
+- root(r) : root directory
+- tag(t) 
+
+```
+damia generate --t python vscode --root .
+```
