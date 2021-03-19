@@ -1,2 +1,6 @@
 {
+    "rust-client.revealOutputChannelOn": "info",
+    "rust-client.trace.server": "verbose",
+    "rust-client.disableRustup": true,
+    "rust-client.updateOnStartup": true
 }
