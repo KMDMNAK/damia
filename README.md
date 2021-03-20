@@ -18,10 +18,15 @@ pip install damia
 npm i -g damia
 ```
 
-# usage
+# commands
+
 ## help
 ### lan
 show list of supported languages
+
+
+___
+
 
 ## docker
 ### dev
@@ -32,6 +37,11 @@ show list of supported languages
 ```
 damia docker dev
 ```
+
+
+
+___
+
 
 ## template
 ### generate
@@ -51,3 +61,16 @@ damia generate -t python vscode
 ```
 damia generate --t python vscode --root .
 ```
+
+
+___
+
+
+## vscode
+
+### open
+
+**Options**
+- --compose-file(--c)
+- --dockerfile(--d)
+- --service(--s)
