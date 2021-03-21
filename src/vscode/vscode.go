@@ -4,6 +4,7 @@ import (
 	"errors"
 	"os/exec"
 
+	"github.com/damia/docker"
 	"github.com/damia/models"
 )
 
@@ -33,22 +34,34 @@ func RunOpen(args []string, flags *models.VscodeOpenFlags) error {
 	if err != nil {
 		return err
 	}
-	cmd := genCommand(args[0], flags)
+	cmd, err := genCommand(args[0], flags)
+	if err != nil {
+		return err
+	}
 	err = cmd.Start()
 	return err
 }
 
-func genCommand(arg string, flags *models.VscodeOpenFlags) *exec.Cmd {
+func genCommand(arg string, flags *models.VscodeOpenFlags) (*exec.Cmd, error) {
 	var cmd *exec.Cmd
+	var err error
 	if flags.Type == "dir" {
 		dirpath := arg
 		cmd = exec.Command("code", dirpath)
-	} else if flags.Type == "service" {
-		// TODO
-		cmd = exec.Command("code")
-	} else if flags.Type == "container" {
-		containername := arg
+	} else {
+		var containername string
+		if flags.Type == "service" {
+			// TODO
+			serviceName := arg
+			composepath := flags.Path
+			containername, err = docker.GetContainerName(serviceName, composepath)
+			if err != nil {
+				return nil, err
+			}
+		} else if flags.Type == "container" {
+			containername = arg
+		}
 		cmd = exec.Command("code", "--folder-uri=vscode-remote://attached-container+"+getContaierInfo(containername)+flags.WORK_DIR)
 	}
-	return cmd
+	return cmd, nil
 }
