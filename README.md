@@ -68,9 +68,9 @@ ___
 
 ## vscode
 
-### open
-
+### open    
+arg : directory path, service name
 **Options**
-- --compose-file(--c)
-- --dockerfile(--d)
-- --service(--s)
+- --type (dir;default, service,container)
+- --path **work only for type service**
+- --work_dir **work only for type service**

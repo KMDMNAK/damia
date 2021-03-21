@@ -6,8 +6,20 @@ services:
     build:
       context: ..
       dockerfile: ./docker/Dockerfile.dev
-    working_dir: /root/damia
     volumes: 
-      - ..:/root/damia
+      - ..:/root/workspace
+    working_dir: /root/workspace
     tty: true
     command: "/bin/bash"
+  build: 
+    image: damia/dev
+    build:
+      context: ..
+      dockerfile: ./docker/Dockerfile.dev
+    volumes: 
+      - ..:/root/workspace
+    network_mode: host
+    working_dir: /root/workspace
+    command: "/bin/bash ./scripts/build.sh"
+    # command: "/bin/bash"
+    
